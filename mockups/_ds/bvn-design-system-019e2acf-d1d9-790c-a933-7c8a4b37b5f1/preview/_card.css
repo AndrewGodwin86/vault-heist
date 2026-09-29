@@ -1,0 +1,31 @@
+/* Preview-card scaffold — keeps cards lean & sized to ~700px wide */
+html, body {
+  margin: 0; padding: 0;
+  background: var(--white);
+  color: var(--fg);
+  font-family: var(--font-sans);
+}
+.card {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.card--tight  { padding: 16px 24px; }
+.card--dark   { background: var(--black); color: var(--fg-inverse); }
+.row { display: flex; align-items: center; gap: 16px; }
+.grid { display: grid; gap: 12px; }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.eyebrow--ink { color: var(--fg); }
+.divider {
+  height: 1px; background: currentColor; opacity: 1;
+}

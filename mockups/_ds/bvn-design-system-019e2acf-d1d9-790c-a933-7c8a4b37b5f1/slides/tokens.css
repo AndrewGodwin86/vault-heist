@@ -1,0 +1,66 @@
+/* =============================================================
+   BVN Slide Template — type + colour tokens (mirror of design
+   system colors_and_type.css, with paths relative to slides/).
+   ============================================================= */
+
+/* -------- Fonts -------- */
+@font-face {
+  font-family: "ABC Favorit";
+  src: url("fonts/ABCFavorit-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "ABC Favorit";
+  src: url("fonts/ABCFavorit-RegularItalic.ttf") format("truetype");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "ABC Favorit";
+  src: url("fonts/ABCFavorit-Bold.ttf") format("truetype");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "ABC Favorit";
+  src: url("fonts/ABCFavorit-BoldItalic.ttf") format("truetype");
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "ABC Favorit Lining";
+  src: url("fonts/ABCFavoritLining-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "ABC Favorit Mono";
+  src: url("fonts/ABCFavoritMono-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+
+:root {
+  --font-sans: "ABC Favorit", "Helvetica Neue", Arial, sans-serif;
+  --font-lining: "ABC Favorit Lining", "ABC Favorit", sans-serif;
+  --font-mono: "ABC Favorit Mono", ui-monospace, monospace;
+
+  /* Core */
+  --black: #000;
+  --white: #fff;
+  --grey:  #b3b3b3;
+
+  /* BVN palette — from theme1.xml */
+  --aqua:        #3fdadf;   /* dk2 */
+  --citron:      #e0f532;   /* lt2 */
+  --violet:      #6d67bd;   /* accent1 */
+  --vermilion:   #ed5933;   /* accent2 */
+  --lime:        #99ef4c;   /* accent3 */
+  --amber:       #ffa600;   /* accent4 */
+  --azure:       #0093ee;   /* accent5 */
+  --crimson:     #96131b;   /* accent6 */
+  --indigo:      #13519c;
+  --sunflower:   #fcdb00;
+  --pale-citron: #f7fccc;
+  --pistachio:   #bfe9d0;
+  /* Soft fills used as cover/divider grounds in the PPTX */
+  --soft-violet: #B6B3DE;
+  --soft-lavender:#DBD9ED;
+  --soft-peach:  #F6AC99;
+  --soft-mint:   #80D3A0;
+}

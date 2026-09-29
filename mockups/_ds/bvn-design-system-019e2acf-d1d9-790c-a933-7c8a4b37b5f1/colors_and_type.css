@@ -1,0 +1,340 @@
+/* =============================================================
+   BVN Design System — Foundations
+   ABC Favorit type family + monochrome-first palette w/ accents
+   ============================================================= */
+
+/* -------- Fonts -------- */
+@font-face {
+  font-family: "ABC Favorit";
+  src: url("fonts/ABCFavorit-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "ABC Favorit";
+  src: url("fonts/ABCFavorit-RegularItalic.ttf") format("truetype");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "ABC Favorit";
+  src: url("fonts/ABCFavorit-Bold.ttf") format("truetype");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "ABC Favorit";
+  src: url("fonts/ABCFavorit-BoldItalic.ttf") format("truetype");
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "ABC Favorit Lining";
+  src: url("fonts/ABCFavoritLining-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "ABC Favorit Mono";
+  src: url("fonts/ABCFavoritMono-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "ABC Favorit Mono";
+  src: url("fonts/ABCFavoritMono-RegularItalic.ttf") format("truetype");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+
+/* -------- Tokens -------- */
+:root {
+  /* Type families */
+  --font-sans: "ABC Favorit", "Helvetica Neue", Arial, sans-serif;
+  --font-lining: "ABC Favorit Lining", "ABC Favorit", sans-serif;
+  --font-mono: "ABC Favorit Mono", "JetBrains Mono", ui-monospace, monospace;
+
+  /* Core palette — BVN is black on white first. Always. */
+  --black: #000000;
+  --white: #FFFFFF;
+  --grey:  #b3b3b3;
+
+  /* Accent / spot colours — used sparingly, never as broad backgrounds.
+     Names follow the BVN supplied palette. */
+  --aqua:    #3fdadf;   /* turquoise / fresh */
+  --violet:  #6d67bd;   /* indigo / cool accent */
+  --citron:  #e0f532;   /* electric yellow-green */
+  --amber:   #ffa600;   /* heritage amber */
+  --crimson: #96131b;   /* deep institutional red */
+  --indigo:  #13519c;   /* signal blue */
+  --lime:    #99ef4c;   /* fluoro green */
+  --vermilion:#ed5933;  /* warm orange-red */
+  --pale-citron: #F7FCCC;
+  --azure:   #0093ee;
+  --pistachio:#bfe9d0;
+  --sunflower:#fcdb00;
+
+  /* Semantic colour roles */
+  --bg:        var(--white);
+  --bg-inverse:var(--black);
+  --fg:        var(--black);
+  --fg-inverse:var(--white);
+  --fg-muted:  var(--grey);
+  --rule:      var(--black);          /* hairlines, dividers */
+  --rule-soft: rgba(0,0,0,0.12);
+  --accent:    var(--vermilion);      /* default editorial accent */
+
+  /* -------------------------------------------------------------
+     Typography — per BVN Brand Guidelines §5.6–5.9
+     -------------------------------------------------------------
+     Roles: H0–H6 (Headline) · B1/B2 (Body) · C1/C2 (Caption).
+
+     Size→leading/tracking matrix from §5.8 (text grows ⇒ both tighten):
+       ≥400 pt   90%   −0.050 em   (mega)
+       ~300 pt   95%   −0.025 em
+       ~150 pt  100%   −0.015 em
+       ~75  pt  100%   −0.015 em
+       ~35  pt  110%    0
+       ≤20  pt  120%    0
+
+     Brand body is 15 pt; on screen we follow the web 16 px convention.
+     1 pt ≈ 1 px on screen; H0/H1 are clamp()-ed for small viewports.
+
+     Default weight is REGULAR for all heading levels (§5.6). Bold is
+     reserved for H4-bold and H6 — and as one of the four hierarchy
+     levers (Scale · Case · Weight · Underline) listed in §5.9.
+
+     Emphasis = Favorit Lining (not italic, not bold).
+     Pull quotes = Favorit Mono.
+  ------------------------------------------------------------- */
+
+  /* Headline (H) */
+  --h0-size: clamp(72px, 16vw, 300px);  --h0-lh: 0.96;  --h0-ls: -0.045em;
+  --h1-size: clamp(48px, 6.5vw, 80px);  --h1-lh: 1.00;  --h1-ls: -0.015em;
+  --h2-size: 45px;                      --h2-lh: 1.066; --h2-ls: -0.015em; /* 45/48 */
+  --h3-size: 30px;                      --h3-lh: 1.066; --h3-ls: -0.015em; /* 30/32 */
+  --h4-size: 18px;                      --h4-lh: 1.111; --h4-ls: 0;        /* 18/20 */
+  --h5-size: 10px;                      --h5-lh: 1.20;  --h5-ls: 0.04em;   /* 10/12, uppercase */
+  --h6-size: 10px;                      --h6-lh: 1.20;  --h6-ls: 0;        /* 10/12, bold */
+
+  /* Body (B) */
+  --b1-size: 16px;                      --b1-lh: 1.20;  --b1-ls: 0;        /* brand 15/18; web 16/19.2 */
+  --b2-size: 10px;                      --b2-lh: 1.20;  --b2-ls: 0;        /* 10/12 */
+
+  /* Caption (C) — Mono */
+  --c1-size: 10px;                      --c1-lh: 1.20;  --c1-ls: 0;        /* 10/12 */
+  --c2-size: 8px;                       --c2-lh: 1.25;  --c2-ls: 0;        /* 8/10 */
+
+  /* Per-size tracking helpers (use sparingly per §5.9c) */
+  --tracking-mega:    -0.050em;   /* ≥400pt */
+  --tracking-display: -0.025em;   /* ~300pt */
+  --tracking-tight:   -0.015em;   /* 75–150pt */
+  --tracking-normal:   0;
+  --tracking-wide:     0.04em;
+  --tracking-smallcaps:0.04em;
+
+  /* Geometry — BVN is geometric and architectural.
+     Corners are square. Radii used only for pills/avatars. */
+  --radius-0: 0px;
+  --radius-pill: 999px;
+
+  /* Borders */
+  --border-hairline: 1px solid var(--rule);
+  --border-rule:     1.5px solid var(--rule);
+  --border-bold:     2px solid var(--rule);
+
+  /* Spacing — a strict 4-step rhythm matching the grid */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10:128px;
+
+  /* Layout */
+  --grid-gutter: 24px;
+  --grid-columns: 12;
+  --page-max: 1440px;
+  --page-pad: clamp(20px, 4vw, 56px);
+
+  /* Motion — restrained, editorial. */
+  --ease-standard: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --ease-emphasis: cubic-bezier(0.85, 0, 0.15, 1);
+  --dur-quick: 120ms;
+  --dur-base:  240ms;
+  --dur-slow:  480ms;
+}
+
+/* -------- Base reset (minimal) -------- */
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body {
+  font-family: var(--font-sans);
+  font-size: var(--b1-size);
+  line-height: var(--b1-lh);
+  letter-spacing: var(--b1-ls);
+  color: var(--fg);
+  background: var(--bg);
+  margin: 0;
+  /* §5.9k: smart quotes always */
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+/* -------- Type roles — H0–H6, B1/B2, C1/C2 (§5.6) --------
+   All headings default to Regular. Bold is reserved for H4-bold and H6
+   and as one of the four hierarchy levers in §5.9.
+-------------------------------------------------------- */
+
+.h0, .h1, .h2, .h3, .h4, .h5, .h6,
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  text-wrap: balance;
+  margin: 0 0 0.5em;            /* §5.9d: paragraph spacing = 50% of size */
+}
+
+.h0       { font-size: var(--h0-size); line-height: var(--h0-lh); letter-spacing: var(--h0-ls); }
+.h1, h1   { font-size: var(--h1-size); line-height: var(--h1-lh); letter-spacing: var(--h1-ls); }
+.h2, h2   { font-size: var(--h2-size); line-height: var(--h2-lh); letter-spacing: var(--h2-ls); }
+.h3, h3   { font-size: var(--h3-size); line-height: var(--h3-lh); letter-spacing: var(--h3-ls); }
+.h4, h4   { font-size: var(--h4-size); line-height: var(--h4-lh); letter-spacing: var(--h4-ls); }
+.h4-bold  { font-size: var(--h4-size); line-height: var(--h4-lh); letter-spacing: var(--h4-ls); font-weight: 700; }
+.h5, h5   { font-size: var(--h5-size); line-height: var(--h5-lh); letter-spacing: var(--h5-ls); text-transform: uppercase; }
+.h6, h6   { font-size: var(--h6-size); line-height: var(--h6-lh); letter-spacing: var(--h6-ls); font-weight: 700; }
+
+/* Headings may shift from left- to centre-aligned (§5.9a) */
+.h-centre { text-align: center; }
+
+/* -------- Body (B) -------- */
+p, .b1 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--b1-size);
+  line-height: var(--b1-lh);
+  letter-spacing: var(--b1-ls);
+  margin: 0 0 0.5em;
+  text-wrap: pretty;
+  max-width: 38em;              /* §5.9g: ~9–13 words per line at 16px */
+}
+.b2 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--b2-size);
+  line-height: var(--b2-lh);
+  letter-spacing: var(--b2-ls);
+  margin: 0 0 0.5em;
+  text-wrap: pretty;
+}
+
+/* Emphasis = Favorit Lining (§5.6) — never italic, never bold */
+.b1-emphasis, .b2-emphasis,
+em, .emphasis {
+  font-family: var(--font-lining);
+  font-style: normal;
+  font-weight: 400;
+}
+/* Real italic is still available via <i> for foreign-language convention. */
+i { font-style: italic; }
+
+/* Pull quotes = Favorit Mono, indented 200% of text size (§5.6, §5.9f) */
+.b1-pullquote, .b2-pullquote,
+blockquote.pull {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-style: normal;
+  padding-inline-start: 2em;
+  margin: 1em 0;
+  max-width: 38em;
+}
+.b1-pullquote { font-size: var(--b1-size); line-height: var(--b1-lh); }
+.b2-pullquote { font-size: var(--b2-size); line-height: var(--b2-lh); }
+
+/* -------- Caption (C) — Favorit Mono (§5.6) -------- */
+.c1, .c2,
+figcaption {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  margin: 0;
+}
+.c1, figcaption { font-size: var(--c1-size); line-height: var(--c1-lh); letter-spacing: var(--c1-ls); }
+.c2             { font-size: var(--c2-size); line-height: var(--c2-lh); letter-spacing: var(--c2-ls); }
+
+/* Numbers / diagrammatic numbers carry tabular + lining figures (§5.6) */
+.c1-numbers, .c2-numbers,
+.c1-diag, .c2-diag {
+  font-family: var(--font-mono);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.c1-numbers, .c1-diag { font-size: var(--c1-size); line-height: var(--c1-lh); }
+.c2-numbers, .c2-diag { font-size: var(--c2-size); line-height: var(--c2-lh); }
+
+/* -------- Hierarchy levers (§5.9) — Scale · Case · Weight · Underline -- */
+
+/* Small caps (§5.9 step 2) — for section heads at start of paragraph */
+.smallcaps {
+  font-variant-caps: all-small-caps;
+  letter-spacing: var(--tracking-smallcaps);
+}
+
+/* Case utilities */
+.uppercase { text-transform: uppercase; letter-spacing: 0.04em; }
+.lowercase { text-transform: lowercase; }
+
+/* Weight is a lever, not a default — opt-in only */
+.weight-bold    { font-weight: 700; }
+.weight-regular { font-weight: 400; }
+
+/* Underline emphasis (§5.9 step 4) — the least-formal lever */
+.underline-emphasis, u.underline-emphasis {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.16em;
+}
+
+/* Tracking helpers (§5.9c). Default is metric 0; tighten only at scale. */
+.track-mega   { letter-spacing: var(--tracking-mega); }
+.track-display{ letter-spacing: var(--tracking-display); }
+.track-tight  { letter-spacing: var(--tracking-tight); }
+.track-normal { letter-spacing: var(--tracking-normal); }
+.track-wide   { letter-spacing: var(--tracking-wide); }
+
+/* -------- Lists (§5.9e) — indent 200% of text size --------
+   Primary: filled disc.  Nested: outlined circle.
+-------------------------------------------------------- */
+ul, ol {
+  padding-inline-start: 2em;
+  margin: 0 0 0.5em;
+}
+ul             { list-style: disc; }
+ul ul, ol ul   { list-style: circle; }
+ol             { list-style: decimal; }
+ol ol          { list-style: lower-alpha; }
+li             { margin: 0; padding-inline-start: 0.25em; }
+li > ul, li > ol { margin-top: 0.25em; }
+
+/* -------- Primes vs. quotes (§5.9k) -------- */
+.prime  { font-feature-settings: "ss01" on; }   /* straight prime ′ */
+.dprime { font-feature-settings: "ss01" on; }   /* straight double-prime ″ */
+
+/* -------- Links -------- */
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: opacity var(--dur-quick) var(--ease-standard);
+}
+a:hover { opacity: 0.6; }
+
+/* -------- Rules / dividers -------- */
+hr {
+  border: none;
+  border-top: var(--border-hairline);
+  margin: var(--space-6) 0;
+}
+hr.bold {
+  border-top: var(--border-bold);
+}
+
+/* -------- Utility -------- */
+.no-wrap { white-space: nowrap; }
+.balance { text-wrap: balance; }
+.pretty  { text-wrap: pretty; }
+

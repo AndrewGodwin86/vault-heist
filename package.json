@@ -1,0 +1,16 @@
+{
+  "name": "vault-heist",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client -c yellow,white \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w server && npm run build -w client",
+    "typecheck": "npm run typecheck -w server && npm run build -w client"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}

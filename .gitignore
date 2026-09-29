@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+.snyk-cache/
+
+# ABC Favorit is a licensed commercial typeface — keep it out of the public repo.
+# The CSS falls back to Helvetica Neue / Arial when these files are missing.
+*.ttf
